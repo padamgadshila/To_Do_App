@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function Index() {
   const { toggleDarkMode } = useTheme();
+
   return (
     <View style={styles.cont}>
       <Text style={styles.txt}>This is Padam Gadshila</Text>
