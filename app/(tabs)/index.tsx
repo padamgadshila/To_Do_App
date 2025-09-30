@@ -1,31 +1,22 @@
+import { createHomeStyles } from "@/assets/styles/home.styles";
 import useTheme from "@/hooks/useTheme";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-
+import { LinearGradient } from "expo-linear-gradient";
+import { Text, TouchableOpacity } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 export default function Index() {
-  const { toggleDarkMode } = useTheme();
+  const { toggleDarkMode, colors } = useTheme();
+  const styles = createHomeStyles(colors);
 
   return (
-    <View style={styles.cont}>
-      <Text style={styles.txt}>This is Padam Gadshila</Text>
-      <TouchableOpacity onPress={toggleDarkMode}>
-        <Text>Change the theme</Text>
-      </TouchableOpacity>
-    </View>
+    <LinearGradient
+      colors={colors.gradients.background}
+      style={styles.container}
+    >
+      <SafeAreaView style={styles.safeArea}>
+        <TouchableOpacity onPress={toggleDarkMode}>
+          <Text>Change the theme</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
-
-const styles = StyleSheet.create({
-  cont: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  txt: {
-    fontSize: 20,
-    fontWeight: "bold",
-    padding: 10,
-    backgroundColor: "blue",
-    color: "#fff",
-    borderRadius: 10,
-  },
-});
